@@ -1,0 +1,6 @@
+.idea/
+app/runtime/
+!app/runtime/.gitignore
+app/vendor/
+composer.lock
+/.env
