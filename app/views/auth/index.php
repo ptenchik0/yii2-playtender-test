@@ -1,0 +1,1 @@
+<h1>Auth Index Page</h1>

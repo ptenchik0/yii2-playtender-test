@@ -4,12 +4,13 @@
 /** @var string $content */
 
 use app\assets\AppAsset;
-//use app\widgets\Alert;
 use yii\bootstrap4\Alert;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+
+\yii\web\YiiAsset::register($this);
 
 //AppAsset::register($this);
 
@@ -43,28 +44,28 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>'
+            Yii::$app->user->isGuest ? ['label' => 'Login', 'url' => ['/auth/login']] :
+                [
+                    'label' =>  'Logout (' . Yii::$app->user->identity->fullname . ')',
+                    'url' => ['/auth/logout'],
+                    'linkOptions' => [
+                        'data' => ['method' => 'post']
+                    ]
+                ],
         ]
     ]);
     NavBar::end();
     ?>
 </header>
 
-<main id="main" class="flex-shrink-0" role="main">
+<main id="main" class="flex-shrink-0 mt-5 pt-5" role="main">
     <div class="container">
         <?php if (!empty($this->params['breadcrumbs'])): ?>
             <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
         <?php endif ?>
-        <?= Alert::widget() ?>
+        <?php if (!empty(Yii::$app->session->allFlashes)): ?>
+            <?= Alert::widget() ?>
+        <?php endif ?>
         <?= $content ?>
     </div>
 </main>

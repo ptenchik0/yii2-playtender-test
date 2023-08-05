@@ -5,6 +5,7 @@ $params = require __DIR__ . '/params.php';
 $config = [
     'id' => 'playtenderTest',
     'name' => 'PlaytenderTest',
+    'defaultRoute' => 'auth',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -14,13 +15,14 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '',
+            'cookieValidationKey' => '-DY7T3tSDgU7soDd6hZF-_st0clIOmyb',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
             'identityClass' => 'app\models\User',
+            'loginUrl' => ['auth/login'],
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -45,8 +47,14 @@ $config = [
         ],
 
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            'enablePrettyUrl' => false,
             'showScriptName' => false,
+            /*'enableStrictParsing' => true,
+            'rules' => [
+                'register' => 'auth/signup',
+                '<controller:[\wd-]+>/<action:[\wd-]+>/' => '<controller>/<action>',
+                '<controller:[\wd-]+>/<action:[\wd-]+>/<id:[\d-]+>' => '<controller>/<action>',
+            ],*/
         ],
 
     ],
