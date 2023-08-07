@@ -39,17 +39,17 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav ml-md-auto'],
         'items' => [
-            ['label' => 'Purchases', 'url' => ['/purchase/purchase/index']],
-            ['label' => 'My Purchases', 'url' => ['/purchase/purchase/own'], 'visible' => !Yii::$app->user->isGuest],
-            Yii::$app->user->isGuest ? ['label' => 'Login', 'url' => ['/auth/login']] :
+            ['label' => Yii::t('app', 'Purchases'), 'url' => ['/purchase/purchase/index']],
+            ['label' => Yii::t('app', 'My Purchases'), 'url' => ['/purchase/purchase/own'], 'visible' => !Yii::$app->user->isGuest],
+            Yii::$app->user->isGuest ? ['label' => Yii::t('app', 'Login'), 'url' => ['/auth/login']] :
                 [
-                    'label' =>  'Logout (' . Yii::$app->user->identity->fullname . ')',
+                    'label' =>  Yii::t('app', 'Logout ({fullname})', ['fullname' => Yii::$app->user->identity->fullname]) ,
                     'url' => ['/auth/logout'],
                     'linkOptions' => [
                         'data' => ['method' => 'post']
                     ]
                 ],
-            ['label' => 'Sign Up', 'url' => ['/auth/signup'], 'visible' => Yii::$app->user->isGuest]
+            ['label' => Yii::t('app', 'Sign up'), 'url' => ['/auth/signup'], 'visible' => Yii::$app->user->isGuest]
         ]
     ]);
     NavBar::end();

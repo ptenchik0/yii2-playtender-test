@@ -8,6 +8,7 @@ return [
     'Remember Me' => 'Запомнить меня',
     'Need an account? Sign up.' => 'Нет аккаунта? Зареестрируйтесь.',
     'Login' => 'Вход',
+    'Logout ({fullname})' => 'Выйти ({fullname})',
     'Incorrect email or password.' => 'Неверный E-mail или Пароль.',
     'Sign up' => 'Регистрация',
     'User name' => 'Имя',
