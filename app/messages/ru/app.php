@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'Budget: <strong>{value}</strong>' => 'Бюджет: <strong>{value}</strong>',
+    'Status' => 'Статус',
+    'Purchases' => 'Закупки',
+    'My Purchases' => 'Мои закупки',
+    'Update Purchase: {name}' => 'Обновить: {name}',
+    'Nomenclatures' => 'Номенклатуры',
+    'Nomenclature' => 'Номенклатура',
+    'Amount' => 'Кол-во',
+    'Unit' => 'Ед.изм.',
+    'Title' => 'Название',
+    'Budget' => 'Бюджет',
+    'Description' => 'Описание',
+    'Create Purchase' => 'Создать закупку',
+    'Status: {status}' => 'Статус: {status}',
+    'Views: {views}' => 'Просмотров: {views}',
+    'Published' => 'Активный',
+    'Draft' => 'Черновик',
+    'Add' => 'Добавить',
+    'Delete' => 'Удалить',
+    'Save' => 'Сохранить',
+    'Update' => 'Обновить',
+];

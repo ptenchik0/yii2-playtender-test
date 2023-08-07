@@ -14,7 +14,7 @@ use yii\web\Response;
 class AuthController extends Controller
 {
 
-    //public $defaultAction = 'login';
+    public $layout = 'auth';
 
     public function behaviors()
     {
@@ -42,10 +42,6 @@ class AuthController extends Controller
                 ],
             ],
         ];
-    }
-
-    public function actionIndex(){
-        return $this->render('index');
     }
 
     public function actionSignup(){

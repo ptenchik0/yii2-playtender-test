@@ -11,9 +11,9 @@ $this->title = Yii::t('app', 'Sign up');
     'id' => 'signup-form',
     'enableAjaxValidation' => true,
 ]); ?>
-<div class="signup mt-5">
+<div class="signup mt-0">
     <div class="row justify-content-center">
-        <div class="col-sm-4">
+        <div class="col-sm-6 col-lg-4">
             <div class="card mb-2">
                 <div class="card-body">
                     <h1 class="text-muted text-center"><?php echo Html::encode($this->title) ?></h1>

@@ -1,16 +1,23 @@
 <?php
 
 $params = require __DIR__ . '/params.php';
+$db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'playtenderTest',
     'name' => 'PlaytenderTest',
-    'defaultRoute' => 'auth',
+    'language' => 'ru-RU',
+    'defaultRoute' => 'purchase',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+    ],
+    'controllerMap' => [
+        'error' => [
+            'class' => 'yii\web\ErrorAction',
+        ],
     ],
     'components' => [
         'request' => [
@@ -37,26 +44,54 @@ $config = [
                 ],
             ],
         ],
-        'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => env('DB_DSN'),
-            'username' => env('DB_USERNAME'),
-            'password' => env('DB_PASSWORD'),
-            'charset' => env('DB_CHARSET', 'utf8'),
-            'enableSchemaCache' => YII_ENV_PROD,
+        'db' => $db,
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'sourceLanguage' => 'en-US',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                    ],
+                ],
+            ],
         ],
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'thousandSeparator' => ' ',
+            'decimalSeparator' => '.',
 
+        ],
         'urlManager' => [
-            'enablePrettyUrl' => false,
+            'enablePrettyUrl' => true,
             'showScriptName' => false,
-            /*'enableStrictParsing' => true,
             'rules' => [
-                'register' => 'auth/signup',
+                '<action:(login|logout|signup)>' => 'auth/<action>',
                 '<controller:[\wd-]+>/<action:[\wd-]+>/' => '<controller>/<action>',
                 '<controller:[\wd-]+>/<action:[\wd-]+>/<id:[\d-]+>' => '<controller>/<action>',
-            ],*/
+                '<module:[\wd\-]+>/<controller:[\wd\-]+>/<action:[\wd\-]+>/<id:[\d\-]+>' => '<module>/<controller>/<action>',
+            ],
         ],
-
+        'assetManager' => [
+            'class' => '\yii\web\AssetManager',
+            'linkAssets' => true,
+            'bundles' => [
+                'wbraganca\dynamicform\DynamicFormAsset' => [
+                    'sourcePath' => null,
+                    'basePath' => '@webroot',
+                    'baseUrl' => '@web',
+                    'js' => [
+                        'js/yii2-dynamic-form.js',
+                    ],
+                ],
+            ]
+        ],
+    ],
+    'modules' => [
+        'purchase' => [
+            'class' => 'app\modules\purchase\Purchase'
+        ],
     ],
     'params' => $params,
 ];
