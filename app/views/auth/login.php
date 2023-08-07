@@ -3,7 +3,7 @@
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
 
-$this->title = Yii::t('app', 'Login');
+$this->title = Yii::t('app', 'Authorization');
 ?>
 <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 <div class="site-login mt-0">

@@ -9,7 +9,8 @@
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap4": "~2.0.0",
         "vlucas/phpdotenv": "^5.3.0",
-        "wbraganca/yii2-dynamicform": "*"
+        "wbraganca/yii2-dynamicform": "*",
+        "ext-intl": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

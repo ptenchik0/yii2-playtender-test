@@ -88,7 +88,7 @@ class PurchaseController extends Controller
         $model = $this->findModel($id);
 
         if ($model->status == Purchase::STATUS_DRAFT && $model->created_by != Yii::$app->user->id){
-            throw new ForbiddenHttpException('Вы не можете редактировать данную закупку');
+            throw new ForbiddenHttpException(Yii::t('app', 'You can\'t view current purchase'));
         }
 
         $model->updateCounters(['views' => 1]);

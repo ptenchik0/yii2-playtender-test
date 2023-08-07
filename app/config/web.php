@@ -59,8 +59,13 @@ $config = [
         ],
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
+            'locale' => 'uk_UA',
             'thousandSeparator' => ' ',
             'decimalSeparator' => '.',
+            'numberFormatterSymbols' => [
+                \NumberFormatter::CURRENCY_SYMBOL => 'грн.',
+                \NumberFormatter::MONETARY_SEPARATOR_SYMBOL => '.',
+            ],
 
         ],
         'urlManager' => [

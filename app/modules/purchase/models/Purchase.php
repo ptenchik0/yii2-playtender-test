@@ -108,7 +108,7 @@ class Purchase extends ActiveRecord
     {
 
         if ($this->getOldAttribute('status') == self::STATUS_PUBLISHED && $this->getAttribute('status') != self::STATUS_PUBLISHED){
-            $this->addError('status', 'Нельзя изменить статус');
+            $this->addError('status', Yii::t('app', 'Status can not be changed'));
             $this->status = self::STATUS_PUBLISHED;
             return false;
         }

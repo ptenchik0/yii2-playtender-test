@@ -33,7 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'title',
             'description:ntext',
-            'budget',
+            [
+                'attribute' => 'budget',
+                'value' => function($model){
+                    return Yii::$app->formatter->asCurrency($model->budget, 'UAH');
+                }
+            ],
         ],
     ]) ?>
 
